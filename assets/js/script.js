@@ -22,10 +22,17 @@ function randomWord() {
     .then(data => {
         const words = Object.keys(data);
         const randomWord = words[Math.floor(Math.random() * words.length)];
+        // Ensure underscores match the word length (no spaces between)
         const explanation = data[randomWord];
+        console.log(explanation);
+        const hideWord = Array(explanation.length).fill('_').join(' ');
 
-    
-        document.getElementById('word-json').textContent = explanation;
+        // Display the word to guess
+        const wordElement = document.getElementById('word-json');
+        if (wordElement) {
+            wordElement.textContent = hideWord;
+        }
+        
         
     })
     .catch(error => {
