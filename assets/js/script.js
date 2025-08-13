@@ -22,6 +22,14 @@ function randomWord() {
         currentWord = data[Math.floor(Math.random() * data.length)].toLowerCase();; // Force the word to be lowercase
         guessedLetters = [];
         
+
+         // Show the guessed-letters-list element
+        const guessedList = document.getElementById('guessed-letters-list');
+        if (guessedList) {
+            guessedList.style.display = 'inline';
+            guessedList.textContent = ''; // Clear previous guesses
+        }
+
         // Log the current word for debugging
         console.log('Current word:', currentWord); // Changed to log the actual word
         
@@ -56,8 +64,8 @@ document.addEventListener('keydown', function(event) {
 
 function guessLetter(letter) {
     if (!currentWord || guessedLetters.includes(letter)) return;
-    
     guessedLetters.push(letter);
+    
     
     // check if the letter is in the current word
     if (currentWord.includes(letter)) {

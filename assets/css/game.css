@@ -41,6 +41,11 @@ body{
   flex: 1;
   text-align: center;
 }
+#guessed-letters-list {
+    display: none;
+}
+
+
 
 .word-guess {
   font-size: 1.5rem;
