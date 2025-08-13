@@ -63,6 +63,7 @@ function guessLetter(letter) {
     if (currentWord.includes(letter)) {
         console.log(`Correct! The letter "${letter}" is in the word.`);
     } else {
+        document.getElementById('guessed-letters-list').textContent += letter + ' ';
         console.log(`Wrong! The letter "${letter}" is not in the word.`);
     }
     
