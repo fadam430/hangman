@@ -12,9 +12,32 @@ function openNewGame() {
 
 let currentWord = '';
 let guessedLetters = [];
+let wrongGuesses = 0;
+let maxWrongGuesses = 7; // Maximum number of wrong guesses allowed
+
+const hangmanImages = [
+    '/assets/images/base.png', // base image, no fails
+    '/assets/images/fail1.png',
+    '/assets/images/fail2.png',
+    '/assets/images/fail3.png',  
+    '/assets/images/fail4.png',
+    '/assets/images/fail5.png',
+    '/assets/images/fail6.png',
+    '/assets/images/fail7.png',
+]
+
+function updateHangmanImages() {
+    if (wrongGuesses >= 0 && wrongGuesses < hangmanImages.length) {
+    document.getElementById('fail_images').src = hangmanImages[wrongGuesses];
+    }
+    
+}
 
 // generate random number and take place in JSON file to get the word
 function randomWord() {
+    wrongGuesses = 0;
+    updateHangmanImages(); // Reset the hangman image to the base image
+
     fetch('/assets/js/dictionary.JSON')
     .then(response => response.json())
     .then(data => {
@@ -29,7 +52,8 @@ function randomWord() {
             guessedList.style.display = 'inline';
             guessedList.textContent = ''; // Clear previous guesses
         }
-
+        
+        
         // Log the current word for debugging
         console.log('Current word:', currentWord); // Changed to log the actual word
         
@@ -45,6 +69,8 @@ function randomWord() {
     .catch(error => {
         console.error('Error fetching the word list:', error);
     });
+     // Reset wrong guesses
+     // Update the hangman image to the base image
 }
 
 // generate new world when the button is clicked
@@ -71,6 +97,9 @@ function guessLetter(letter) {
     if (currentWord.includes(letter)) {
         console.log(`Correct! The letter "${letter}" is in the word.`);
     } else {
+        wrongGuesses++;
+        // update the hangman image based on wrong guesses
+        const imageElement = document.getElementById('fail_images');
         document.getElementById('guessed-letters-list').textContent += letter + ' ';
         console.log(`Wrong! The letter "${letter}" is not in the word.`);
     }
@@ -85,4 +114,5 @@ function guessLetter(letter) {
     if (wordElement) {
         wordElement.textContent = display.trim();
     }
+    updateHangmanImages();
 }
