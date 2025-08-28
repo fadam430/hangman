@@ -14,6 +14,7 @@ let currentWord = '';
 let guessedLetters = [];
 let wrongGuesses = 0;
 let maxWrongGuesses = 7; // Maximum number of wrong guesses allowed
+let gameOver = false; // Track if game is over
 
 const hangmanImages = [
     '/assets/images/base.png', // base image, no fails
@@ -25,6 +26,89 @@ const hangmanImages = [
     '/assets/images/fail6.png',
     '/assets/images/fail7.png',
 ]
+
+// WIN condition 
+function checkWin() {
+    return currentWord.split('').every(letter => guessedLetters.includes(letter));
+}
+
+// LOST condition
+function checkLoss() {
+    return wrongGuesses >= maxWrongGuesses;
+}
+
+// Reset game state
+function resetGame() {
+    currentWord = '';
+    guessedLetters = [];
+    wrongGuesses = 0;
+    gameOver = false;
+
+    const wordElement = document.getElementById('word-json');
+    if (wordElement) {
+        wordElement.style.color = '#333'; // Reset to default color
+        wordElement.style.fontWeight = 'bold'; // Reset to default font weight
+        wordElement.style.backgroundImage = 'none'; // Reset background image
+        wordElement.textContent = ''; // Clear the displayed word
+    }
+
+    // reset guessed letters display
+    const guessedList = document.getElementById('guessed-letters-list');
+    if (guessedList) {
+        guessedList.textContent = '';
+    }   
+
+    // Reset hangman image
+    const imageElement = document.getElementById('fail_images');
+    if (imageElement) {
+        imageElement.src = hangmanImages[0]; // Reset to base image
+    } 
+}
+
+// Handle win condition
+function handleWin() {
+    gameOver = true;
+    // this console log for debugging purposes
+    console.log('Congratulations! You guessed the word:', currentWord);
+
+    const wordElement = document.getElementById('word-json');
+    if (wordElement) {
+        wordElement.style.color = 'green';
+        wordElement.style.fontWeight = 'bold';
+    }
+
+    // visual feedback for win
+    setTimeout(() => {
+        
+        // start a new game
+        if (confirm('Do you want to play again?')) {
+            resetGame();
+            randomWord();
+        }
+    }, 500);
+}
+
+// Handle loss condition
+function handleLoss() {
+    gameOver = true;
+    // this console log for debugging purposes
+    console.log('Game Over! The correct word was:', currentWord);
+
+    const wordElement = document.getElementById('word-json');
+    if (wordElement) {
+        wordElement.style.backgroundImage = '/assets/images/game_over.png';
+        
+    }
+    // visual feedback for loss
+    setTimeout(() => {
+        alert('GAME OVER! You guessed the word: ' + currentWord);
+        // start a new game
+        if (confirm('Do you want to play again?')) {
+            resetGame();
+            randomWord();
+        }
+    }, 500);
+}
 
 function updateHangmanImages() {
     if (wrongGuesses >= 0 && wrongGuesses < hangmanImages.length) {
@@ -42,7 +126,7 @@ function randomWord() {
     .then(response => response.json())
     .then(data => {
         
-        currentWord = data[Math.floor(Math.random() * data.length)].toLowerCase();; // Force the word to be lowercase
+        currentWord = data[Math.floor(Math.random() * data.length)].toLowerCase(); // Force the word to be lowercase
         guessedLetters = [];
         
 
@@ -58,7 +142,7 @@ function randomWord() {
         console.log('Current word:', currentWord); // Changed to log the actual word
         
         // Create a string of underscores for the word to guess
-        const hideWord = Array(currentWord.length).fill('_').join(' '); // Fixed: use currentWord.length instead of explanation.length
+        const hideWord = Array(currentWord.length).fill('_').join(' '); 
         
         // Display the word to guess
         const wordElement = document.getElementById('word-json');
@@ -89,19 +173,28 @@ document.addEventListener('keydown', function(event) {
 });
 
 function guessLetter(letter) {
-    if (!currentWord || guessedLetters.includes(letter)) return;
+    if (!currentWord || guessedLetters.includes(letter)|| gameOver) return;
     guessedLetters.push(letter);
     
     
     // check if the letter is in the current word
     if (currentWord.includes(letter)) {
         console.log(`Correct! The letter "${letter}" is in the word.`);
+        
+        if (checkWin()) {
+            handleWin();
+            return
+        }
     } else {
         wrongGuesses++;
         // update the hangman image based on wrong guesses
-        const imageElement = document.getElementById('fail_images');
         document.getElementById('guessed-letters-list').textContent += letter + ' ';
         console.log(`Wrong! The letter "${letter}" is not in the word.`);
+        // lost condition
+        if (checkLoss()) {
+            handleLoss();
+            return
+        }
     }
     
     // update the displayed word

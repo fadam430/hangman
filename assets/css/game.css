@@ -144,76 +144,8 @@ body {
     transform: translateY(0);
 }
 
-/* Letter buttons (if you want to add them) */
-.letter-buttons {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0.5rem;
-    margin-top: 1rem;
-    max-width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
-.letter-btn {
-    background: #fff;
-    border: 2px solid #667eea;
-    color: #667eea;
-    padding: 0.8rem;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-size: 0.9rem;
-}
 
-.letter-btn:hover:not(:disabled) {
-    background: #667eea;
-    color: white;
-}
-
-.letter-btn:disabled {
-    background: #f8f9fa;
-    color: #ccc;
-    border-color: #e9ecef;
-    cursor: not-allowed;
-}
-
-.letter-btn.correct {
-    background: #28a745;
-    border-color: #28a745;
-    color: white;
-}
-
-.letter-btn.wrong {
-    background: #dc3545;
-    border-color: #dc3545;
-    color: white;
-}
-
-/* Game stats (optional addition) */
-.game-stats {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 1rem;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-    margin-top: 1rem;
-}
-
-.stat-item {
-    text-align: center;
-    flex: 1;
-}
-
-.stat-value {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #667eea;
-    display: block;
-}
 
 /* Tablet styles (768px+) */
 @media screen and (min-width: 768px) {
@@ -256,17 +188,6 @@ body {
         letter-spacing: 0.4rem;
     }
     
-    .letter-buttons {
-        grid-template-columns: repeat(8, 1fr);
-        max-width: 400px;
-        gap: 0.7rem;
-    }
-    
-    .letter-btn {
-        padding: 1rem;
-        font-size: 1rem;
-    }
-    
     #start-game-btn {
         width: auto;
         min-width: 250px;
@@ -302,23 +223,7 @@ body {
         letter-spacing: 0.5rem;
     }
     
-    .letter-buttons {
-        grid-template-columns: repeat(10, 1fr);
-        max-width: 600px;
-        gap: 0.8rem;
-    }
     
-    .letter-btn {
-        padding: 1.2rem;
-        font-size: 1.1rem;
-    }
-    
-    /* Hover effects for desktop */
-    .game-image:hover,
-    .word-guess:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    }
 }
 
 /* Large desktop styles (1440px+) */

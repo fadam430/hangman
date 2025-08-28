@@ -42,10 +42,7 @@ body {
   transition: 0.3s;
 }
 
-#new-game-btn:hover {
-  opacity: 0.9;
-  transform: scale(1.05);
-}
+
 
 .game-title {
   margin-bottom: 20px;
