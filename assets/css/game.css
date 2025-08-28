@@ -96,23 +96,29 @@ body {
 
 .word-guess {
     background: rgba(255, 255, 255, 0.95);
-    padding: 2rem 1rem;
+    padding: 1.5rem 0.5rem;
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     text-align: center;
-    min-height: 120px;
+    min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: auto; /* Allow horizontal scroll if needed */
 }
 
 #word-json {
-    font-size: 1.8rem;
+    font-size: 1.4rem; /* Smaller for mobile */
     font-weight: bold;
-    letter-spacing: 0.3rem;
+    letter-spacing: 0.2rem; /* Reduced spacing for mobile */
     color: #333;
     font-family: 'Courier New', monospace;
-    word-break: break-all;
+    word-break: keep-all; /* Don't break words */
+    white-space: nowrap; /* Keep on one line */
+    min-height: 2rem; /* Ensure minimum height */
+    line-height: 1.2;
+    /* Make underscores more visible */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 #game-controls {
@@ -144,10 +150,105 @@ body {
     transform: translateY(0);
 }
 
+/* Letter buttons (if you want to add them) */
+.letter-buttons {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+    margin-top: 1rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+.letter-btn {
+    background: #fff;
+    border: 2px solid #667eea;
+    color: #667eea;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
 
+.letter-btn:hover:not(:disabled) {
+    background: #667eea;
+    color: white;
+}
 
-/* Tablet styles (768px+) */
+.letter-btn:disabled {
+    background: #f8f9fa;
+    color: #ccc;
+    border-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+.letter-btn.correct {
+    background: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.letter-btn.wrong {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+/* Game stats (optional addition) */
+.game-stats {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #667eea;
+    display: block;
+}
+
+/* Mobile-specific fixes for word visibility */
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    .word-guess {
+        padding: 1rem 0.25rem;
+        min-height: 80px;
+        margin: 0 -0.25rem; /* Use full width */
+    }
+    
+    #word-json {
+        font-size: 1.2rem; /* Even smaller for very small screens */
+        letter-spacing: 0.15rem;
+        /* Ensure underscores are visible on all mobile devices */
+        text-decoration: none;
+        font-weight: 900; /* Extra bold */
+        color: #000; /* Darker color for better contrast */
+    }
+    
+    /* Make sure underscores are thick and visible */
+    .underscore {
+        font-weight: 900;
+        text-decoration: underline;
+        text-decoration-thickness: 3px;
+    }
+}
 @media screen and (min-width: 768px) {
     .container {
         max-width: 800px;
@@ -188,6 +289,17 @@ body {
         letter-spacing: 0.4rem;
     }
     
+    .letter-buttons {
+        grid-template-columns: repeat(8, 1fr);
+        max-width: 400px;
+        gap: 0.7rem;
+    }
+    
+    .letter-btn {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    
     #start-game-btn {
         width: auto;
         min-width: 250px;
@@ -223,7 +335,23 @@ body {
         letter-spacing: 0.5rem;
     }
     
+    .letter-buttons {
+        grid-template-columns: repeat(10, 1fr);
+        max-width: 600px;
+        gap: 0.8rem;
+    }
     
+    .letter-btn {
+        padding: 1.2rem;
+        font-size: 1.1rem;
+    }
+    
+    /* Hover effects for desktop */
+    .game-image:hover,
+    .word-guess:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
 }
 
 /* Large desktop styles (1440px+) */
