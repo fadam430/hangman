@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "babel-jest": "^30.1.2",
     "jquery": "^3.7.1"
   },
   "devDependencies": {
@@ -15,5 +16,13 @@
     "test": "jest"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fadam430/hangman.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fadam430/hangman/issues"
+  },
+  "homepage": "https://github.com/fadam430/hangman#readme"
 }

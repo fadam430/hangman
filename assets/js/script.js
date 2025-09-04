@@ -248,12 +248,21 @@ function updateWordDisplay() {
 }
 
 module.exports = {
-    checkWin, 
-    checkLoss,
-    resetGame,
-    guessLetter,
-    updateHangmanImages,
-    updateGuessedLettersDisplay,
+    currentWord,
+    guessedLetters,
+    wrongGuesses,
+    gameOver,
+    maxWrongGuesses,
+    hangmanImages,
     randomWord,
-    updateWordDisplay
+    guessLetter,
+    resetGame,
+    updateWordDisplay,
+    updateHangmanImages,
+    checkWin,
+    checkLoss,
+    handleWin,
+    handleLoss,
+    updateGuessedLettersDisplay,
+    openNewGame
 };
