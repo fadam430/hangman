@@ -246,3 +246,14 @@ function updateWordDisplay() {
         wordElement.textContent = display.trim();
     }
 }
+
+module.exports = {
+    checkWin, 
+    checkLoss,
+    resetGame,
+    guessLetter,
+    updateHangmanImages,
+    updateGuessedLettersDisplay,
+    randomWord,
+    updateWordDisplay
+};
