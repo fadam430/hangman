@@ -273,11 +273,9 @@ body {
         transform: scale(1);
     }
 }
-/* Success/failure states */
-.game-won {
-    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-}
-
-.game-lost {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+.footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #3B060A;
+    margin-top: 2rem;
 }
