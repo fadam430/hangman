@@ -1,8 +1,9 @@
+document.addEventListener('DOMContentLoaded', function() {
+    openNewGame();
+});
 // This script handles the "New Game" button click event
-
-
 function openNewGame() {
-    const button = document.getElementById("new-game-btn");
+    let button = document.getElementById("new-game-btn");
     if (button) {
         button.addEventListener("click", function() {
             window.location.href = "game.html";
