@@ -129,8 +129,8 @@ function updateGuessedLettersDisplay() {
     const guessedList = document.getElementById('guessed-letters-list');
     if (guessedList) {
         // Separate correct and wrong guesses for better display
-        const correctGuesses = guessedLetters.filter(letter => currentWord.includes(letter));
-        const wrongGuesses = guessedLetters.filter(letter => !currentWord.includes(letter));
+       // const correctGuesses = guessedLetters.filter(letter => currentWord.includes(letter));
+       // const wrongGuesses = guessedLetters.filter(letter => !currentWord.includes(letter));
         
         // Display all guessed letters
         guessedList.textContent = guessedLetters.join(', ').toUpperCase();
@@ -170,6 +170,7 @@ function randomWord() {
         
         // Reset hangman image to base
         updateHangmanImages();
+    
     })
     .catch(error => {
         console.error('Error fetching the word list:', error);
@@ -246,9 +247,11 @@ function updateWordDisplay() {
         wordElement.textContent = display.trim();
     }
 }
-
+function getCurrentWord() {
+    return currentWord;
+}
 module.exports = {
-    currentWord,
+    
     guessedLetters,
     wrongGuesses,
     gameOver,
@@ -264,5 +267,6 @@ module.exports = {
     handleWin,
     handleLoss,
     updateGuessedLettersDisplay,
-    openNewGame
+    openNewGame,
+    getCurrentWord
 };
