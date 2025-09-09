@@ -12,7 +12,9 @@ body {
     color: #333;
     line-height: 1.6;
 }
-
+.modal {
+    display: none; /* Hidden by default */
+}
 /*Mobile First - Base styles (320px+)*/
 .container {
     max-width: 100%;

@@ -17,14 +17,14 @@ let maxWrongGuesses = 7; // Maximum number of wrong guesses allowed
 let gameOver = false; // Track if game is over
 
 const hangmanImages = [
-    '/assets/images/base.png', // base image, no fails
-    '/assets/images/fail1.png',
-    '/assets/images/fail2.png',
-    '/assets/images/fail3.png',  
-    '/assets/images/fail4.png',
-    '/assets/images/fail5.png',
-    '/assets/images/fail6.png',
-    '/assets/images/fail7.png',
+    'assets/images/base.png', // Base image
+    'assets/images/fail1.png',
+    'assets/images/fail2.png',
+    'assets/images/fail3.png',  
+    'assets/images/fail4.png',
+    'assets/images/fail5.png',
+    'assets/images/fail6.png',
+    'assets/images/fail7.png',
 ]
 
 // WIN condition 
