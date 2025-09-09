@@ -1,5 +1,5 @@
 // This script handles the "New Game" button click event
-openNewGame();
+
 
 function openNewGame() {
     button = document.getElementById("new-game-btn");
@@ -9,6 +9,7 @@ function openNewGame() {
         });
     }
 }
+openNewGame();
 
 let currentWord = '';
 let guessedLetters = [];
@@ -250,23 +251,25 @@ function updateWordDisplay() {
 function getCurrentWord() {
     return currentWord;
 }
-module.exports = {
-    
-    guessedLetters,
-    wrongGuesses,
-    gameOver,
-    maxWrongGuesses,
-    hangmanImages,
-    randomWord,
-    guessLetter,
-    resetGame,
-    updateWordDisplay,
-    updateHangmanImages,
-    checkWin,
-    checkLoss,
-    handleWin,
-    handleLoss,
-    updateGuessedLettersDisplay,
-    openNewGame,
-    getCurrentWord
-};
+// Only export for Node.js/testing, not in the browser
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        guessedLetters,
+        wrongGuesses,
+        gameOver,
+        maxWrongGuesses,
+        hangmanImages,
+        randomWord,
+        guessLetter,
+        resetGame,
+        updateWordDisplay,
+        updateHangmanImages,
+        checkWin,
+        checkLoss,
+        handleWin,
+        handleLoss,
+        updateGuessedLettersDisplay,
+        openNewGame,
+        getCurrentWord
+    };
+}

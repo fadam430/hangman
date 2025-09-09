@@ -22,7 +22,7 @@ const {
     handleWin,
     handleLoss,
     updateGuessedLettersDisplay,
-    openNewGame } = require('../script');
+    openNewGame } = require('../script').default;
 
     
 // Mock setup utilities
