@@ -2,7 +2,7 @@
 
 
 function openNewGame() {
-    button = document.getElementById("new-game-btn");
+    const button = document.getElementById("new-game-btn");
     if (button) {
         button.addEventListener("click", function() {
             window.location.href = "game.html";
@@ -141,7 +141,7 @@ function updateGuessedLettersDisplay() {
 // generate random number and take place in JSON file to get the word
 function randomWord() {
     
-    fetch('/assets/js/dictionary.JSON')
+    fetch('assets/js/dictionary.JSON')
     .then(response => response.json())
     .then(data => {
         currentWord = data[Math.floor(Math.random() * data.length)].toLowerCase();
