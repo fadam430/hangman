@@ -214,16 +214,17 @@ function handleLetterInput() {
                 }
         if (tapArea) {
             tapArea.addEventListener('click', function() {
-                if (input) {
-                    input.focus(); // Focus the hidden input to bring up the keyboard
-                }
+                input.style.opacity = 1;
+                input.style.position = 'static';
+                input.style.left = 'auto';
+                input.focus();
+        } )}
             });
         }
     });
     
 }
-    });
-}
+
 handleLetterInput();
 
 function guessLetter(letter) {
