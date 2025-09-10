@@ -186,6 +186,7 @@ if (startButton) {
     startButton.addEventListener('click', function() {
         resetGame(); //  Reset before starting new game
         randomWord();
+        handleLetterInput();
     });
 }
 
@@ -217,6 +218,7 @@ function handleLetterInput() {
                 input.style.opacity = 1;
                 input.style.position = 'static';
                 input.style.left = 'auto';
+                input.focus();
         } )}
             });
         }
@@ -224,7 +226,7 @@ function handleLetterInput() {
     
 }
 
-handleLetterInput();
+
 
 function guessLetter(letter) {
     if (!currentWord || guessedLetters.includes(letter) || gameOver) return;
