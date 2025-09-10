@@ -190,17 +190,19 @@ if (startButton) {
 }
 
 // listen for keyboard input
-document.addEventListener('keydown', function(event) {
-    if (gameOver) return; //  Don't accept input if game is over
-    
-    event.preventDefault(); // Prevent default browser action
-    const letter = event.key.toLowerCase();
-    if (/^[a-zA-Z]$/.test(letter)) {
-        guessLetter(letter);
-        console.log('Key pressed:', letter);
-    }
-});
+const letterInput = document.getElementById('letter-input');
+const guessBtn = document.getElementById('guess-btn');
 
+if (letterInput && guessBtn) {
+    guessBtn.addEventListener('click', function() {
+        const letter = letterInput.value.toLowerCase();
+        if (/^[a-z]$/.test(letter)) {
+            guessLetter(letter);
+        }
+        letterInput.value = ''; // Clear input after guess
+        letterInput.focus();    // Keep keyboard open on mobile
+    });
+}
 function guessLetter(letter) {
     if (!currentWord || guessedLetters.includes(letter) || gameOver) return;
     

@@ -142,8 +142,10 @@ body {
     max-width: 200px;
     border-radius: 10px;
 }
-
-/* Mobile-specific fixes for word visibility */
+#guess-btn , #letter-input {
+    display: none; /* Hidden by default */
+}
+/* Mobile-specific word visibility */
 @media screen and (max-width: 480px) {
     .container {
         padding: 0.5rem;
