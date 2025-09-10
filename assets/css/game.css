@@ -145,7 +145,7 @@ body {
 #guess-btn , #letter-input {
     display: none; /* Hidden by default */
 }
-/* Mobile-specific word visibility */
+/* Mobile word visibility */
 @media screen and (max-width: 480px) {
     .container {
         padding: 0.5rem;
@@ -162,14 +162,17 @@ body {
         letter-spacing: 0.15rem;
         text-decoration: none;
         font-weight: 900; 
-        color: #000; /* Darker color for better contrast */
+        color: #000; 
     }
     
-    /* Make sure underscores are thick and visible */
+    
     .underscore {
         font-weight: 900;
         text-decoration: underline;
         text-decoration-thickness: 3px;
+    }
+    #mobile-input{
+        display: none;
     }
 }
 @media screen and (min-width: 768px) {
