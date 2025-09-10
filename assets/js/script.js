@@ -196,31 +196,35 @@ if (startButton) {
 function handleLetterInput() {
     const input = document.getElementById('letterInput');
     const tapArea = document.getElementById('word-json'); // Tapping the word area to focus input
-    
-        
-        if (tapArea && input) {
-        
-            input.style.opacity = 0;
-            input.style.position = 'absolute';
-            input.style.left = '-9999px';
 
-            tapArea.addEventListener('click', function() {
-                input.style.opacity = 1;
-                input.style.position = 'static';
-                input.style.left = 'auto';
-                input.focus();
-            });
-            input.addEventListener('input', function(e) {
-                const letter = e.target.value.toLowerCase();
-                if (/^[a-z]$/.test(letter)) {
-                    guessLetter(letter);
-                }   
-                 // Hide input again
-            input.style.opacity = 0;
-            input.style.position = 'absolute';
-            input.style.left = '-9999px';
+        document.getElementById('word-json').addEventListener('click', function() {
+    const input = document.getElementById('letterInput');
+    input.focus();
+});
+        
+        // if (tapArea && input) {
+        
+        //     input.style.opacity = 0;
+        //     input.style.position = 'absolute';
+        //     input.style.left = '-9999px';
+
+        //     tapArea.addEventListener('click', function() {
+        //         input.style.opacity = 1;
+        //         input.style.position = 'static';
+        //         input.style.left = 'auto';
+        //         input.focus();
+        //     });
+        //     input.addEventListener('input', function(e) {
+        //         const letter = e.target.value.toLowerCase();
+        //         if (/^[a-z]$/.test(letter)) {
+        //             guessLetter(letter);
+        //         }   
+        //          // Hide input again
+        //     input.style.opacity = 0;
+        //     input.style.position = 'absolute';
+        //     input.style.left = '-9999px';
             
-                })};
+        //         })};
             
         
 
