@@ -203,7 +203,7 @@ function handleLetterInput() {
         const letter = e.key.toLowerCase();
         if (/^[a-z]$/.test(letter)) {
             e.preventDefault();
-            handleGuess(letter);
+            guessLetter(letter);
         }
     });
     
@@ -213,7 +213,7 @@ function handleLetterInput() {
             const letter = e.target.value.toLowerCase();
             e.target.value = '';
             if (letter && /[a-z]/.test(letter)) {
-                handleGuess(letter);
+                guessLetter(letter);
             }
         });
     }
