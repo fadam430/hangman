@@ -56,7 +56,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    flex: 1;
+    
 }
 
 .game-image {
@@ -125,7 +125,7 @@ body {
 
 #game-controls {
     text-align: center;
-    margin-top: auto;
+    
 }
 
 #start-game-btn {
@@ -170,7 +170,7 @@ body {
         text-decoration: underline;
         text-decoration-thickness: 3px;
     }
-    #mobile-input{
+    #letterInput {
         display: none;
     }
 }
