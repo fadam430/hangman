@@ -189,20 +189,43 @@ if (startButton) {
     });
 }
 
-// listen for keyboard input
-const letterInput = document.getElementById('letter-input');
-const guessBtn = document.getElementById('guess-btn');
+// letter input mobile and desktop
 
-if (letterInput && guessBtn) {
-    guessBtn.addEventListener('click', function() {
-        const letter = letterInput.value.toLowerCase();
-        if (/^[a-z]$/.test(letter)) {
+function handleLetterInput(event) {
+    const input = document.getElementById('letterInput');
+
+    document.addEventListener('keydown', function(e) {
+        if (gameOver) return; // Ignore input if game is over
+
+        const letter = e.key.toLowerCase();
+
+        if (/^[a-z]$/.test(letter)) { // Check if it's a valid letter
+            e.preventDefault(); // Prevent default action like scrolling
             guessLetter(letter);
         }
-        letterInput.value = ''; // Clear input after guess
-        letterInput.focus();    // Keep keyboard open on mobile
+
+        if (input) {
+            input.addEventListener('input', function(e) {
+                const letter = e.target.value.toLowerCase();
+                e.target.value = ''; // Clear input after capturing the letter
+
+                if (/^[a-z]$/.test(letter)) { // Check if it's a valid letter
+                    guessLetter(letter);
+                }
+    });
+    input.addEventListener('blur', function() {
+        // Refocus the input when it loses focus
+        setTimeout(() => {
+            if (!gameOver) {
+                input.focus();
+            }
+        }, 0);
     });
 }
+    });
+}
+handleLetterInput();
+
 function guessLetter(letter) {
     if (!currentWord || guessedLetters.includes(letter) || gameOver) return;
     
