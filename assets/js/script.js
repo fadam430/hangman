@@ -196,35 +196,42 @@ function handleLetterInput() {
     const input = document.getElementById('letterInput');
     const tapArea = document.getElementById('word-json'); // Tapping the word area to focus input
     document.addEventListener('keydown', function(e) {
-        if (gameOver) return; // Ignore input if game is over
-
-        const letter = e.key.toLowerCase();
-
-        if (/^[a-z]$/.test(letter)) { // Check if it's a valid letter
-            e.preventDefault(); // Prevent default action like scrolling
-            guessLetter(letter);
-        }
-
-        if (input) {
-            input.addEventListener('input', function(e) {
-                const letter = e.target.value.toLowerCase();
-                e.target.value = ''; // Clear input after capturing the letter
-
-                if (/^[a-z]$/.test(letter)) { // Check if it's a valid letter
-                    guessLetter(letter);
-                }
-        if (tapArea) {
+        
+        if (tapArea && input) {
             tapArea.addEventListener('click', function() {
                 input.style.opacity = 1;
                 input.style.position = 'static';
                 input.style.left = 'auto';
                 input.focus();
-        } )}
+            });
+
+            // Listen for input (mobile keyboard)
+            input.addEventListener('input', function(e) {
+                const letter = e.target.value.toLowerCase();
+                e.target.value = '';
+                if (/^[a-z]$/.test(letter)) {
+                    guessLetter(letter);
+                }
+                // Optionally hide input again after guess:
+                input.style.opacity = 0;
+                input.style.position = 'absolute';
+                input.style.left = '-9999px';
             });
         }
-    });
-    
-}
+
+        // Also keep your desktop keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (gameOver) return;
+            const letter = e.key.toLowerCase();
+            if (/^[a-z]$/.test(letter)) {
+                e.preventDefault();
+                guessLetter(letter);
+            }
+        });
+    }
+    ) }
+
+
 
 
 
