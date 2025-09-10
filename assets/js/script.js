@@ -1,6 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     openNewGame();
+    handleLetterInput();
 });
 // This script handles the "New Game" button click event
 function openNewGame() {
@@ -195,29 +196,33 @@ if (startButton) {
 function handleLetterInput() {
     const input = document.getElementById('letterInput');
     const tapArea = document.getElementById('word-json'); // Tapping the word area to focus input
-    document.addEventListener('keydown', function(e) {
+    
         
         if (tapArea && input) {
+        
+            input.style.opacity = 0;
+            input.style.position = 'absolute';
+            input.style.left = '-9999px';
+
             tapArea.addEventListener('click', function() {
                 input.style.opacity = 1;
                 input.style.position = 'static';
                 input.style.left = 'auto';
                 input.focus();
             });
-
-            // Listen for input (mobile keyboard)
             input.addEventListener('input', function(e) {
                 const letter = e.target.value.toLowerCase();
-                e.target.value = '';
                 if (/^[a-z]$/.test(letter)) {
                     guessLetter(letter);
-                }
-                // Optionally hide input again after guess:
-                input.style.opacity = 0;
-                input.style.position = 'absolute';
-                input.style.left = '-9999px';
-            });
-        }
+                }   
+                 // Hide input again
+            input.style.opacity = 0;
+            input.style.position = 'absolute';
+            input.style.left = '-9999px';
+            
+                })};
+            
+        
 
         // Also keep your desktop keyboard support
         document.addEventListener('keydown', function(e) {
@@ -229,9 +234,6 @@ function handleLetterInput() {
             }
         });
     }
-    ) }
-
-
 
 
 
