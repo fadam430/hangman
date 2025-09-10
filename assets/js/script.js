@@ -213,14 +213,7 @@ function handleLetterInput(event) {
                     guessLetter(letter);
                 }
     });
-    input.addEventListener('blur', function() {
-        // Refocus the input when it loses focus
-        setTimeout(() => {
-            if (!gameOver) {
-                input.focus();
-            }
-        }, 0);
-    });
+    
 }
     });
 }

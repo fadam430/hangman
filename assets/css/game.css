@@ -142,9 +142,8 @@ body {
     max-width: 200px;
     border-radius: 10px;
 }
-#guess-btn , #letter-input {
-    display: none; /* Hidden by default */
-}
+
+
 /* Mobile word visibility */
 @media screen and (max-width: 480px) {
     .container {
