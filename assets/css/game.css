@@ -143,6 +143,17 @@ body {
     border-radius: 10px;
 }
 
+.mobile-input {
+    width: 200px;
+    height: 50px;
+    font-size: 2rem;
+    text-align: center;
+    border: 2px solid #C83F12;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    margin-bottom: 5px;
+}
 
 /* Mobile word visibility */
 @media screen and (max-width: 480px) {
@@ -170,16 +181,15 @@ body {
         text-decoration: underline;
         text-decoration-thickness: 3px;
     }
-    #letterInput {
-        opacity: 0.01 ;
-        width: 1px;
-        height: 1px;
+    /* #letterInput {
+        display: inline;
+        width: 100px;
+        height: 100px;
         border: none;
         position: absolute;
-        left: 0;
-        top: 0;
-        
-    }
+    
+
+    } */
 }
 @media screen and (min-width: 768px) {
     .container {
