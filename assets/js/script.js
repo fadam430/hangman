@@ -197,10 +197,26 @@ function handleLetterInput() {
     const input = document.getElementById('letterInput');
     const tapArea = document.getElementById('word-json'); // Tapping the word area to focus input
 
-        document.getElementById('word-json').addEventListener('click', function() {
-    const input = document.getElementById('letterInput');
-    input.focus();
-});
+     // Desktop keyboard handling
+    document.addEventListener('keydown', function(e) {
+        if (gameOver) return;
+        const letter = e.key.toLowerCase();
+        if (/^[a-z]$/.test(letter)) {
+            e.preventDefault();
+            handleGuess(letter);
+        }
+    });
+    
+    // Mobile input handling
+    if (input) {
+        input.addEventListener('input', function(e) {
+            const letter = e.target.value.toLowerCase();
+            e.target.value = '';
+            if (letter && /[a-z]/.test(letter)) {
+                handleGuess(letter);
+            }
+        });
+    }
         
         // if (tapArea && input) {
         
