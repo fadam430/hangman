@@ -217,7 +217,6 @@ function handleLetterInput() {
                 input.style.opacity = 1;
                 input.style.position = 'static';
                 input.style.left = 'auto';
-                input.focus();
         } )}
             });
         }
