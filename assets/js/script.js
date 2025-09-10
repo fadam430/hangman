@@ -191,9 +191,9 @@ if (startButton) {
 
 // letter input mobile and desktop
 
-function handleLetterInput(event) {
+function handleLetterInput() {
     const input = document.getElementById('letterInput');
-
+    const tapArea = document.querySelector('.container');
     document.addEventListener('keydown', function(e) {
         if (gameOver) return; // Ignore input if game is over
 
@@ -212,6 +212,13 @@ function handleLetterInput(event) {
                 if (/^[a-z]$/.test(letter)) { // Check if it's a valid letter
                     guessLetter(letter);
                 }
+        if (tapArea) {
+            tapArea.addEventListener('click', function() {
+                if (input) {
+                    input.focus(); // Focus the hidden input to bring up the keyboard
+                }
+            });
+        }
     });
     
 }
