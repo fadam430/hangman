@@ -193,7 +193,7 @@ if (startButton) {
 
 function handleLetterInput() {
     const input = document.getElementById('letterInput');
-    const tapArea = document.querySelector('.container');
+    const tapArea = document.getElementById('word-json'); // Tapping the word area to focus input
     document.addEventListener('keydown', function(e) {
         if (gameOver) return; // Ignore input if game is over
 
