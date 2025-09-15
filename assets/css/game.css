@@ -12,8 +12,16 @@ body {
     color: #333;
     line-height: 1.6;
 }
-.modal {
-    display: none; /* Hidden by default */
+.modal-content {
+    background: linear-gradient(135deg, #3B060A 0%, #C83F12 90%);
+    
+}
+.modal-title, .modal-body {
+    color: #FFF287;
+
+}
+.modal-title {
+    border-width: 0 0 0 0;
 }
 /*Mobile First - Base styles (320px+)*/
 .container {

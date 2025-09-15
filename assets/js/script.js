@@ -81,16 +81,27 @@ function handleWin() {
         wordElement.style.color = 'green';
         wordElement.style.fontWeight = 'bold';
     }
-
+    // start a new game
+    
+            
     // visual feedback for win
     setTimeout(() => {
-        alert('Congratulations! You guessed the word: ' + currentWord.toUpperCase());
+                // Show Bootstrap modal
+                const modalElement = document.querySelector('.modal');
+                const winModal = new bootstrap.Modal(modalElement);
+                winModal.show();
+                // Change modal title text
+                const winTitle = document.getElementsByClassName('modal-title')[0];
+                winTitle.textContent = 'Congratulations!' ;
+                // Change modal body text
+                const winBody = document.getElementsByClassName('modal-body')[0];
+                winBody.textContent = 'You guessed the word: ' + currentWord.toUpperCase();
+            
         // start a new game
-        if (confirm('Do you want to play again?')) {
-            resetGame(); //  Reset game first
-            randomWord(); // Then start new word
-        }
-    }, 500);
+        resetGame(); //  Reset game first
+        randomWord(); // Then start new word
+        
+    },100 );
 }
 
 // Handle loss condition
@@ -109,12 +120,25 @@ function handleLoss() {
     
     // visual feedback for loss
     setTimeout(() => {
-        alert('GAME OVER! The word was: ' + currentWord.toUpperCase());
-        // start a new game
-        if (confirm('Do you want to play again?')) {
+        
+                const modalElement = document.querySelector('.modal');
+                const lossModal = new bootstrap.Modal(modalElement);
+                lossModal.show();
+
+                // Change modal title text
+                const lossTitle = document.getElementsByClassName('modal-title')[0];
+                lossTitle.textContent = 'Game Over!' ;
+                // Change modal body text
+                const lossBody = document.getElementsByClassName('modal-body')[0];
+                lossBody.textContent = 'The correct word was: ' + currentWord.toUpperCase();
+                
             resetGame(); // Reset game first
             randomWord(); // Then start new word
-        }
+        
+        // start a new game
+        
+            
+        
     }, 500);
 }
 
