@@ -129,22 +129,23 @@ function handleLoss() {
                 const modalElement = document.querySelector('.modal');
                 const lossModal = new bootstrap.Modal(modalElement);
                 lossModal.show();
-
-                // Change modal title text
-                const lossTitle = document.getElementsByClassName('modal-title')[0];
-                lossTitle.textContent = 'Game Over!' ;
+    
                 // Change modal body text
                 const lossBody = document.getElementsByClassName('modal-body')[0];
-                lossBody.textContent = 'The correct word was: ' + currentWord.toUpperCase();
+                lossBody.textContent = 'Game Over!';
 
-            resetGame(); // Reset game first
-            randomWord(); // Then start new word
+                const newGameButton = document.getElementsByClassName('btn btn-primary')[0];
+                    newGameButton.addEventListener('click', () => {
+                    resetGame(); //  Reset game first
+                    randomWord(); // Then start new word
+                    // Close the modal
+                    lossModal.hide();
+                });
         
-        // start a new game
         
             
         
-    }, 500);
+    }, 100);
 }
 
 function updateHangmanImages() {
@@ -161,10 +162,6 @@ function updateHangmanImages() {
 function updateGuessedLettersDisplay() {
     const guessedList = document.getElementById('guessed-letters-list');
     if (guessedList) {
-        // Separate correct and wrong guesses for better display
-       // const correctGuesses = guessedLetters.filter(letter => currentWord.includes(letter));
-       // const wrongGuesses = guessedLetters.filter(letter => !currentWord.includes(letter));
-        
         // Display all guessed letters
         guessedList.textContent = guessedLetters.join(', ').toUpperCase();
     }

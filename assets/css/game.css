@@ -15,6 +15,7 @@ body {
 .modal-content {
     background: linear-gradient(135deg, #3B060A 0%, #C83F12 90%);
     
+    
 }
 .modal-title, .modal-body {
     color: #FFF287;
@@ -24,6 +25,7 @@ body {
 .modal-header {
     border-bottom: none !important;
     border-width: 0;
+    
 }
 .modal-footer {
     border-top: none !important;
@@ -195,15 +197,7 @@ body {
         text-decoration: underline;
         text-decoration-thickness: 3px;
     }
-    /* #letterInput {
-        display: inline;
-        width: 100px;
-        height: 100px;
-        border: none;
-        position: absolute;
     
-
-    } */
 }
 @media screen and (min-width: 768px) {
     .container {
@@ -249,6 +243,7 @@ body {
         width: auto;
         min-width: 250px;
     }
+    
 }
 
 /* Desktop styles (1024px+) */
