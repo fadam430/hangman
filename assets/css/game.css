@@ -18,10 +18,16 @@ body {
 }
 .modal-title, .modal-body {
     color: #FFF287;
+    text-align: center;
 
 }
-.modal-title {
-    border-width: 0 0 0 0;
+.modal-header {
+    border-bottom: none !important;
+    border-width: 0;
+}
+.modal-footer {
+    border-top: none !important;
+    border-width: 0;
 }
 /*Mobile First - Base styles (320px+)*/
 .container {

@@ -90,16 +90,21 @@ function handleWin() {
                 const modalElement = document.querySelector('.modal');
                 const winModal = new bootstrap.Modal(modalElement);
                 winModal.show();
-                // Change modal title text
-                const winTitle = document.getElementsByClassName('modal-title')[0];
-                winTitle.textContent = 'Congratulations!' ;
+                
                 // Change modal body text
                 const winBody = document.getElementsByClassName('modal-body')[0];
-                winBody.textContent = 'You guessed the word: ' + currentWord.toUpperCase();
+                winBody.textContent = 'Congratulations!';
+                
             
         // start a new game
-        resetGame(); //  Reset game first
-        randomWord(); // Then start new word
+        const newGameButton = document.getElementsByClassName('btn btn-primary')[0];
+        newGameButton.addEventListener('click', () => {
+            resetGame(); //  Reset game first
+            randomWord(); // Then start new word
+            // Close the modal
+            winModal.hide();
+        });
+
         
     },100 );
 }
@@ -131,7 +136,7 @@ function handleLoss() {
                 // Change modal body text
                 const lossBody = document.getElementsByClassName('modal-body')[0];
                 lossBody.textContent = 'The correct word was: ' + currentWord.toUpperCase();
-                
+
             resetGame(); // Reset game first
             randomWord(); // Then start new word
         
