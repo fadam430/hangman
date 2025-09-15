@@ -17,6 +17,25 @@ body {
     
     
 }
+.btn-secondary {
+    background: #8A0000 !important;
+    border: none !important;
+    color: white !important;
+}
+.btn-secondary:hover {
+    
+    color: #FFF287 !important;
+}
+.btn-primary {
+    background: #8A0000 !important;
+    border: none;
+    border-color: #C83F12 !important;
+}
+.btn-primary:hover {
+    background: #C83F12;
+    color: #FFF287 !important;
+}
+
 .modal-title, .modal-body {
     color: #FFF287;
     text-align: center;

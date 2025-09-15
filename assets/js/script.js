@@ -93,7 +93,7 @@ function handleWin() {
                 
                 // Change modal body text
                 const winBody = document.getElementsByClassName('modal-body')[0];
-                winBody.textContent = 'Congratulations!';
+                winBody.textContent = 'Congratulations!'.toLocaleUpperCase();
                 
             
         // start a new game
@@ -132,7 +132,7 @@ function handleLoss() {
     
                 // Change modal body text
                 const lossBody = document.getElementsByClassName('modal-body')[0];
-                lossBody.textContent = 'Game Over!';
+                lossBody.textContent = 'Game Over!'.toUpperCase();
 
                 const newGameButton = document.getElementsByClassName('btn btn-primary')[0];
                     newGameButton.addEventListener('click', () => {
