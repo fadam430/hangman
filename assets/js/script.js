@@ -168,15 +168,16 @@ function updateGuessedLettersDisplay() {
 }
 
 // generate random number and take place in JSON file to get the word
-function randomWord() {
+async function randomWord() {
     
-    fetch('assets/js/dictionary.JSON')
-    .then(response => response.json())
-    .then(data => {
+    try {
+        let response = await fetch('assets/js/dictionary.JSON');
+        let data = await response.json();
+
         currentWord = data[Math.floor(Math.random() * data.length)].toLowerCase();
         guessedLetters = [];
         gameOver = false; // Reset game over flag
-        
+
         // Show the guessed-letters-list element
         const guessedList = document.getElementById('guessed-letters-list');
         if (guessedList) {
@@ -201,10 +202,9 @@ function randomWord() {
         // Reset hangman image to base
         updateHangmanImages();
     
-    })
-    .catch(error => {
+    } catch(error) {
         console.error('Error fetching the word list:', error);
-    });
+    };
 }
 
 // generate new world when the button is clicked
@@ -221,7 +221,7 @@ if (startButton) {
 
 function handleLetterInput() {
     const input = document.getElementById('letterInput');
-    const tapArea = document.getElementById('word-json'); // Tapping the word area to focus input
+    
 
      // Desktop keyboard handling
     document.addEventListener('keydown', function(e) {
@@ -243,33 +243,6 @@ function handleLetterInput() {
             }
         });
     }
-        
-        // if (tapArea && input) {
-        
-        //     input.style.opacity = 0;
-        //     input.style.position = 'absolute';
-        //     input.style.left = '-9999px';
-
-        //     tapArea.addEventListener('click', function() {
-        //         input.style.opacity = 1;
-        //         input.style.position = 'static';
-        //         input.style.left = 'auto';
-        //         input.focus();
-        //     });
-        //     input.addEventListener('input', function(e) {
-        //         const letter = e.target.value.toLowerCase();
-        //         if (/^[a-z]$/.test(letter)) {
-        //             guessLetter(letter);
-        //         }   
-        //          // Hide input again
-        //     input.style.opacity = 0;
-        //     input.style.position = 'absolute';
-        //     input.style.left = '-9999px';
-            
-        //         })};
-            
-        
-
         // Also keep your desktop keyboard support
         document.addEventListener('keydown', function(e) {
             if (gameOver) return;
@@ -336,9 +309,10 @@ function getCurrentWord() {
     return currentWord;
 }
 // Only export for Node.js/testing, not in the browser
-if (typeof module !== 'undefined' && module.exports) {
+
     module.exports = {
         guessedLetters,
+        guessLetters,
         wrongGuesses,
         gameOver,
         maxWrongGuesses,
@@ -354,6 +328,5 @@ if (typeof module !== 'undefined' && module.exports) {
         handleLoss,
         updateGuessedLettersDisplay,
         openNewGame,
-        getCurrentWord
+        
     };
-}

@@ -3,94 +3,137 @@
  * @jest-environment jsdom
  */
 
-
+const hangManTest = require('../script.js');
 const { 
-    getCurrentWord,
+    //getCurrentWord,
     
     guessedLetters,
     wrongGuesses,
     gameOver,
-    maxWrongGuesses,
-    hangmanImages,
-    randomWord,
-    guessLetter,
+    // maxWrongGuesses,
+    // hangmanImages,
+    // randomWord,
+    guessLetters,
     resetGame,
-    updateWordDisplay,
-    updateHangmanImages,
-    checkWin,
-    checkLoss,
-    handleWin,
-    handleLoss,
-    updateGuessedLettersDisplay,
-    openNewGame } = require('../script').default;
+    // updateWordDisplay,
+    // updateHangmanImages,
+    // checkWin,
+    // checkLoss,
+    // handleWin,
+    // handleLoss,
+    // updateGuessedLettersDisplay,
+    // openNewGame 
+} = hangManTest;
 
-    
-// Mock setup utilities
-function setupTestEnvironment() {
-    
-    const mockElements = {
-        'word-json': { textContent: '', style: {} },
-        'guessed-letters-list': { textContent: '', style: {} },
-        'fail_images': { src: '', style: {} },
-        'start-game-btn': { addEventListener: jest.fn(), click: jest.fn() },
-        'new-game-btn': { addEventListener: jest.fn() }
-    };
-    
-    global.document = { getElementById: jest.fn(id => mockElements[id] || null) };
-    global.fetch = jest.fn(() => Promise.resolve({
-        json: () => Promise.resolve(['test', 'word', 'game', 'javascript'])
-    }));
-    
-    return mockElements;
-}
+// Mock fetch for randomWord function
+global.fetch = jest.fn(() => Promise.resolve({
+    json: () => Promise.resolve(['test', 'word', 'game', 'javascript'])
+}));
 
-describe('Hangman Game Core Tests', () => {
-    let mockElements;
-    
-    beforeEach(() => {
-        // Reset game state
-        //currentWord = '';
-       // guessedLetters = [];
-        //wrongGuesses = 0;
-       // gameOver = false;
-        
-        mockElements = setupTestEnvironment();
-        jest.clearAllMocks();
-    });
-
-    
-
-    describe('Word Management', () => {
-        test('should fetch and set random word', async () => {
-    // Wrap in a Promise that resolves when the DOM is updated
-    await new Promise(resolve => {
-        // Patch updateWordDisplay to resolve when called
-        const originalUpdateWordDisplay = updateWordDisplay;
-        updateWordDisplay = function() {
-            originalUpdateWordDisplay();
-            resolve();
-        };
-        randomWord();
-    });
-
-    const testWord = getCurrentWord();
-    console.log('Fetched word:', testWord);
-    expect(fetch).toHaveBeenCalledWith('/assets/js/dictionary.JSON');
-    expect(['test', 'word', 'game', 'javascript']).toContain(testWord);
-    expect(mockElements['word-json'].textContent).toMatch(/^(_ ){3}_$/); // Pattern for 4-letter word
+beforeEach(() => {
+    // Reset game state before each test
+    //currentWord = '';
+    guessLetters.length = 0; // Clear the array without losing reference
+    wrongGuesses = 0;
+    gameOver = false;
+    document.body.innerHTML = `
+        <div id="word-json" style="color: #333;"></div>
+        <div id="guessed-letters-list"></div>   
+        <img id="fail_images" src="assets/images/base.png" />
+        <button id="start-game-btn"></button>
+        <button id="new-game-btn"></button>
+    `;
+    resetGame();
 });
 
+test('resetGame reset all variables and UI', () => {
+    guessLetter.push('a');
+    wrongGuesses = 3;
+    gameOver = true;
+    document.getElementById('word-json').style.color = 'red';
+    resetGame();
+    expect(guessLetters).toEqual([]);
+    expect(wrongGuesses).toBe(0);
+    expect(gameOver).toBe(false);
+    
+    
+})
+
+
+
+
+
+
+
+
+// old test 
+
+// Mock setup utilities
+// function setupTestEnvironment() {
+    
+//     const mockElements = {
+//         'word-json': { textContent: '', style: {} },
+//         'guessed-letters-list': { textContent: '', style: {} },
+//         'fail_images': { src: '', style: {} },
+//         'start-game-btn': { addEventListener: jest.fn(), click: jest.fn() },
+//         'new-game-btn': { addEventListener: jest.fn() }
+//     };
+    
+//     global.document = { getElementById: jest.fn(id => mockElements[id] || null) };
+//     global.fetch = jest.fn(() => Promise.resolve({
+//         json: () => Promise.resolve(['test', 'word', 'game', 'javascript'])
+//     }));
+    
+//     return mockElements;
+// }
+
+// describe('Hangman Game Core Tests', () => {
+//     let mockElements;
+    
+//     beforeEach(() => {
+//         // Reset game state
+//         //currentWord = '';
+//        // guessedLetters = [];
+//         //wrongGuesses = 0;
+//        // gameOver = false;
+        
+//         mockElements = setupTestEnvironment();
+//         jest.clearAllMocks();
+//     });
+
+    
+
+//     describe('Word Management', () => {
+//         test('should fetch and set random word', async () => {
+//     // Wrap in a Promise that resolves when the DOM is updated
+//     await new Promise(resolve => {
+//         // Patch updateWordDisplay to resolve when called
+//         const originalUpdateWordDisplay = updateWordDisplay;
+//         updateWordDisplay = function() {
+//             originalUpdateWordDisplay();
+//             resolve();
+//         };
+//         randomWord();
+//     });
+
+//     const testWord = getCurrentWord();
+//     console.log('Fetched word:', testWord);
+//     expect(fetch).toHaveBeenCalledWith('/assets/js/dictionary.JSON');
+//     expect(['test', 'word', 'game', 'javascript']).toContain(testWord);
+//     expect(mockElements['word-json'].textContent).toMatch(/^(_ ){3}_$/); // Pattern for 4-letter word
+// });
+
         
 
-        //test('should display word correctly with guessed letters', () => {
-           // currentWord = 'hello';
-           // guessedLetters = ['h', 'l', 'o'];
+//         //test('should display word correctly with guessed letters', () => {
+//            // currentWord = 'hello';
+//            // guessedLetters = ['h', 'l', 'o'];
             
-           // updateWordDisplay();
-           // 
-           //expect(mockElements['word-json'].textContent).toBe('h _ l l o');
-        //});
-    });
+//            // updateWordDisplay();
+//            // 
+//            //expect(mockElements['word-json'].textContent).toBe('h _ l l o');
+//         //});
+//     });
 
 //     describe('Letter Guessing Mechanics', () => {
 //         beforeEach(async () => {
@@ -258,11 +301,11 @@ describe('Hangman Game Core Tests', () => {
 //         expect(endTime - startTime).toBeLessThan(100); // Should be very fast
 //         expect(guessedLetters).toHaveLength(26); // All letters guessed
 //     });
-});
+//});
 
 console.log('Streamlined Hangman Test Suite ready!');
 
 // Export for Node.js
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { setupTestEnvironment };
-}
+// if (typeof module !== 'undefined' && module.exports) {
+//     module.exports = { setupTestEnvironment };
+// }
