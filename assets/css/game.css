@@ -50,7 +50,7 @@ body {
     border-top: none !important;
     border-width: 0;
 }
-/*Mobile First - Base styles (320px+)*/
+/*Mobile  styles (320px+)*/
 .container {
     max-width: 100%;
     margin: 0 auto;
