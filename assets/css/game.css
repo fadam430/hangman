@@ -179,9 +179,10 @@ body {
 }
 
 .mobile-input {
-    width: 200px;
-    height: 50px;
+    width: 100px;
+    height: 25px;
     font-size: 2rem;
+    background-color: transparent;
     text-align: center;
     border: 2px solid #C83F12;
     border-radius: 10px;

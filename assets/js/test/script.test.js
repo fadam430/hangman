@@ -3,14 +3,8 @@
  * @jest-environment jsdom
  */
 
-const hangManTest = require('../script.js');
-const { 
-    guessedLetters,
-    wrongGuesses,
-    gameOver,
-    guessLetters,
-    resetGame,
-} = hangManTest;
+
+import { guessedLetters, wrongGuesses, gameOver, guessLetters, resetGame } from '../script.js';
 
 // Mock fetch for randomWord function
 global.fetch = jest.fn(() => Promise.resolve({
@@ -39,7 +33,7 @@ test('resetGame reset all variables and UI', () => {
     gameOver = true;
     document.getElementById('word-json').style.color = 'red';
     resetGame();
-    expect(guessLetters).toEqual([]);
+    expect(guessedLetters).toEqual([]);
     expect(wrongGuesses).toBe(0);
     expect(gameOver).toBe(false);
     

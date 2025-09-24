@@ -305,28 +305,5 @@ function updateWordDisplay() {
         wordElement.textContent = display.trim();
     }
 }
-function getCurrentWord() {
-    return currentWord;
-}
-// Only export for Node.js/testing, not in the browser
 
-    module.exports = {
-        guessedLetters,
-        guessLetters,
-        wrongGuesses,
-        gameOver,
-        maxWrongGuesses,
-        hangmanImages,
-        randomWord,
-        guessLetter,
-        resetGame,
-        updateWordDisplay,
-        updateHangmanImages,
-        checkWin,
-        checkLoss,
-        handleWin,
-        handleLoss,
-        updateGuessedLettersDisplay,
-        openNewGame,
-        
-    };
+
