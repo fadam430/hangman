@@ -133,9 +133,9 @@ Additionally, I used a Chrome extension designed to test site responsiveness acr
 
 | Device tested | Screen Width (px) | Screen Height (px) | Result | Notes (Issues Found) |
 | :---: | :---: | :---: | :---: | :---: |
-| Samsung Galaxy S23| 360px | 780px | ✅ Pass | keyboard  |
-| Samsung Galaxy S25+| 1440px | 3120px | ✅ Pass | 🛠️ Set info panel to hidden when other panels are visible |
-| iPhone 16 | 393px | 852px | ✅ Pass | 🛠️ Set info panel to hidden when other panels are visible |
+| Samsung Galaxy S23| 360px | 780px | ✅ Pass | no issues found  |
+| Samsung Galaxy S25+| 1440px | 3120px | ✅ Pass | no issues found |
+| iPhone 16 | 393px | 852px | ✅ Pass |  no issues found |
 
 
 #### Tablets
