@@ -293,3 +293,4 @@ const updateWordDisplay = () => {
 }
 
 
+module.exports = { openNewGame};
