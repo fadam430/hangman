@@ -65,8 +65,8 @@ body {
     text-align: center;
     background: rgba(255, 255, 255, 0.9);
     padding: 0.5rem 0.5rem;
-    border-radius: 8px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
 }
 
@@ -85,6 +85,7 @@ body {
     color: #666;
     max-width: 300px;
     margin: 0 auto;
+    font-style: italic;
 }
 
 .flex {
@@ -132,7 +133,7 @@ body {
 }
 
 .word-guess {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.85);
     padding: 1.5rem 0.5rem;
     border-radius: 8px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -145,14 +146,14 @@ body {
 }
 
 #word-json {
-    font-size: 1.4rem; /* Smaller for mobile */
+    font-size: 1.4rem; 
     font-weight: bold;
-    letter-spacing: 0.2rem; /* Reduced spacing for mobile */
+    letter-spacing: 0.2rem; 
     color: #333;
     font-family: 'Courier New', monospace;
-    word-break: keep-all; /* Don't break words */
-    white-space: nowrap; /* Keep on one line */
-    min-height: 2rem; /* Ensure minimum height */
+    word-break: keep-all;
+    white-space: nowrap;
+    min-height: 2rem;
     line-height: 1.2;
     /* Make underscores more visible */
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -191,7 +192,7 @@ body {
     margin-bottom: 5px;
 }
 
-/* Mobile word visibility */
+/* Mobile style */
 @media screen and (max-width: 480px) {
     .container {
         padding: 0.5rem;
@@ -219,6 +220,7 @@ body {
     }
     
 }
+/* Tablet styles (768px+) */
 @media screen and (min-width: 768px) {
     .container {
         max-width: 800px;

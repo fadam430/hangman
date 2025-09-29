@@ -73,9 +73,6 @@ function resetGame() {
 // Handle win condition
 function handleWin() {
     gameOver = true;
-    // this console log for debugging purposes
-    console.log('Congratulations! You guessed the word:', currentWord);
-
     const wordElement = document.getElementById('word-json');
     if (wordElement) {
         wordElement.style.color = 'green';
@@ -112,9 +109,6 @@ function handleWin() {
 // Handle loss condition
 function handleLoss() {
     gameOver = true;
-    // this console log for debugging purposes
-    console.log('Game Over! The correct word was:', currentWord);
-
     const wordElement = document.getElementById('word-json');
     if (wordElement) {
         //  Show the actual word instead of setting background image
@@ -153,7 +147,6 @@ function updateHangmanImages() {
         const imageElement = document.getElementById('fail_images');
         if (imageElement) {
             imageElement.src = hangmanImages[wrongGuesses];
-            console.log(`Updated image to: ${hangmanImages[wrongGuesses]} (Wrong guesses: ${wrongGuesses})`);
         }
     }
 }
@@ -184,10 +177,6 @@ async function randomWord() {
             guessedList.style.display = 'inline';
             guessedList.textContent = ''; // Clear previous guesses
         }
-        
-        // Log the current word for debugging
-        console.log('Current word:', currentWord);
-        
         // Create a string of underscores for the word to guess
         const hideWord = Array(currentWord.length).fill('_').join(' ');
         
@@ -263,7 +252,6 @@ function guessLetter(letter) {
     
     // check if the letter is in the current word
     if (currentWord.includes(letter)) {
-        console.log(`Correct! The letter "${letter}" is in the word.`);
         
         // Check win condition after correct guess
         if (checkWin()) {
@@ -274,8 +262,6 @@ function guessLetter(letter) {
         }
     } else {
         wrongGuesses++;
-        console.log(`Wrong! The letter "${letter}" is not in the word.`);
-        
         // Update hangman image after wrong guess
         updateHangmanImages();
         

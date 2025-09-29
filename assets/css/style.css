@@ -14,7 +14,9 @@ body {
   background: linear-gradient(135deg, #C83F12 0%, #FFF287);
   color: white;
 }
-
+p {
+  font-style: italic;
+}
 /* Center container */
 .landing-container {
   text-align: center;
