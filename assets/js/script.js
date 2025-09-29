@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
     handleLetterInput();
 });
 // This script handles the "New Game" button click event
-function openNewGame() {
+const openNewGame = () => {
     let button = document.getElementById("new-game-btn");
-    if (button) {
-        button.addEventListener("click", function() {
+    if (button)  {
+        button.addEventListener("click", () => {
             window.location.href = "game.html";
         });
     }
@@ -32,17 +32,17 @@ const hangmanImages = [
 ]
 
 // WIN condition 
-function checkWin() {
+const checkWin = () => {
     return currentWord.split('').every(letter => guessedLetters.includes(letter));
 }
 
 // LOST condition
-function checkLoss() {
+const checkLoss = () => {
     return wrongGuesses >= maxWrongGuesses;
 }
 
 //  Reset game function
-function resetGame() {
+const resetGame = () => {
     currentWord = '';
     guessedLetters = [];
     wrongGuesses = 0;
@@ -71,7 +71,7 @@ function resetGame() {
 }
 
 // Handle win condition
-function handleWin() {
+const handleWin = () => {
     gameOver = true;
     const wordElement = document.getElementById('word-json');
     if (wordElement) {
@@ -107,7 +107,7 @@ function handleWin() {
 }
 
 // Handle loss condition
-function handleLoss() {
+const handleLoss = () => {
     gameOver = true;
     const wordElement = document.getElementById('word-json');
     if (wordElement) {
@@ -142,7 +142,7 @@ function handleLoss() {
     }, 100);
 }
 
-function updateHangmanImages() {
+const updateHangmanImages = () => {
     if (wrongGuesses >= 0 && wrongGuesses < hangmanImages.length) {
         const imageElement = document.getElementById('fail_images');
         if (imageElement) {
@@ -152,7 +152,7 @@ function updateHangmanImages() {
 }
 
 // Update guessed letters display function
-function updateGuessedLettersDisplay() {
+const updateGuessedLettersDisplay = () => {
     const guessedList = document.getElementById('guessed-letters-list');
     if (guessedList) {
         // Display all guessed letters
@@ -161,11 +161,11 @@ function updateGuessedLettersDisplay() {
 }
 
 // generate random number and take place in JSON file to get the word
-async function randomWord() {
+const randomWord = async ()  => {
     
     try {
-        let response = await fetch('assets/js/dictionary.JSON');
-        let data = await response.json();
+        const response = await fetch('assets/js/dictionary.JSON');
+        const data = await response.json();
 
         currentWord = data[Math.floor(Math.random() * data.length)].toLowerCase();
         guessedLetters = [];
@@ -199,7 +199,7 @@ async function randomWord() {
 // generate new world when the button is clicked
 let startButton = document.getElementById('start-game-btn');
 if (startButton) {
-    startButton.addEventListener('click', function() {
+    startButton.addEventListener('click', () => {
         resetGame(); //  Reset before starting new game
         randomWord();
         handleLetterInput();
@@ -208,7 +208,7 @@ if (startButton) {
 
 // letter input mobile and desktop
 
-function handleLetterInput() {
+const handleLetterInput = () => {
     const input = document.getElementById('letterInput');
     
 
@@ -245,7 +245,7 @@ function handleLetterInput() {
 
 
 
-function guessLetter(letter) {
+const guessLetter = (letter) => {
     if (!currentWord || guessedLetters.includes(letter) || gameOver) return;
     
     guessedLetters.push(letter);
@@ -280,7 +280,7 @@ function guessLetter(letter) {
 }
 
 //  update word display
-function updateWordDisplay() {
+const updateWordDisplay = () => {
     let display = '';
     for (let char of currentWord) {
         display += guessedLetters.includes(char) ? char + ' ' : '_ ';
