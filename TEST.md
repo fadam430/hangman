@@ -146,7 +146,7 @@ I can not test in real life tablet. I tested in [Chrome DevTools](https://develo
 
 | Device tested | Screen Width (px) | Screen Height (px) | Result | Notes (Issues Found) |
 | :---: | :---: | :---: | :---: | :---: |
-| Asus ROG laptop 15" Full HD monitor| 1920px | 1080px | ✅ Pass | ✅ Fully responsive |
+| ASUS ROG laptop 15" Full HD monitor| 1920px | 1080px | ✅ Pass | ✅ Fully responsive |
 | QHD monitor | 2560px | 1440px | ✅ Pass | ✅ Fully responsive  |
 
 ---
@@ -248,9 +248,6 @@ The **Game Panel** provides an interactive interface for users. It dynamically u
 
 ![Game Panel](https://fadam430.github.io/hangman/game.html)
 
-
-
-
 <a id=manual-features-test></a>
 
 ## Manual Features Testing
@@ -276,8 +273,6 @@ The **Game Panel** provides an interactive interface for users. It dynamically u
 | **Use special characters** | Try to type special character to add to guess list but it doesn't accept it | I try to add any special character when game is on. | You can not add special character in the Guessed Letter list. | ✅ No fix needed |
 
 ---
-
-
 
 <br><hr>
 [🔼 Back to top](#contents)
